@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voxel Chess — Play Against the Machine</title>
+  <meta name="description" content="Voxel Chess is a retro-futuristic chess experience. Challenge the Machine across 10 difficulty levels. Master your tactics. Rise through the ranks.">
+  <meta name="keywords" content="chess, mobile chess, voxel chess, retro chess, chess game, play chess, chess app">
+  <meta name="author" content="Pixel Engine">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Voxel Chess — Play Against the Machine">
+  <meta property="og:description" content="A retro-futuristic chess experience. Challenge the Machine across 10 difficulty levels.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/screenshot-menu.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Voxel Chess — Play Against the Machine">
+  <meta name="twitter:description" content="A retro-futuristic chess experience. Challenge the Machine across 10 difficulty levels.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Scanline overlay -->
+  <div class="scanline-overlay" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <svg class="nav-logo-icon" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="Voxel Chess logo">
+          <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M10 22V14l6-6 6 6v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="12" r="2" fill="currentColor"/>
+          <line x1="13" y1="18" x2="19" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-title">VOXEL CHESS</span>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#blog">Blog</a>
+        <a href="#" class="nav-cta">Download</a>
+      </div>
+      <button class="nav-mobile-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features">Features</a>
+    <a href="#screenshots">Screenshots</a>
+    <a href="#blog">Blog</a>
+    <a href="#" class="nav-cta">Download</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>SYSTEM v1.99 // ONLINE</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-line">VOXEL</span>
+          <span class="hero-title-line hero-title-accent">CHESS</span>
+        </h1>
+        <p class="hero-subtitle">
+          <span class="typing-prefix">&gt;&gt;</span> PLAY AGAINST THE MACHINE
+        </p>
+        <p class="hero-desc">Challenge the Machine across 10 difficulty levels. Master your tactics. Rise through the ranks.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span>Download on iOS</span>
+          </a>
+          <a href="#" class="btn btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.04L14.27 12 3.18.96 2.1 2.04 12.04 12 2.1 21.96l1.08 1.08z"/><path d="M20.36 23.04L21.44 21.96 11.5 12l9.94-9.96L20.36.96 9.27 12l11.09 11.04z"/></svg>
+            <span>Get it on Android</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-screenshots">
+        <div class="phone-stack">
+          <div class="phone-mockup phone-main">
+            <div class="phone-screen">
+              <img src="assets/screenshot-menu.jpg" alt="Voxel Chess main menu with voxel knight piece and Start Session button" loading="eager">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>SCROLL TO EXPLORE</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// SYSTEM CAPABILITIES</span>
+        <h2 class="section-title">FEATURE <span class="text-green">MATRIX</span></h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" data-aos>
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="32" height="32" rx="4"/>
+              <line x1="4" y1="12" x2="36" y2="12"/>
+              <line x1="4" y1="20" x2="36" y2="20"/>
+              <line x1="4" y1="28" x2="36" y2="28"/>
+              <line x1="12" y1="4" x2="12" y2="36"/>
+              <line x1="20" y1="4" x2="20" y2="36"/>
+              <line x1="28" y1="4" x2="28" y2="36"/>
+            </svg>
+          </div>
+          <div class="feature-label">01</div>
+          <h3 class="feature-name">10 DIFFICULTY LEVELS</h3>
+          <p class="feature-desc">From Human to Machine God. Scale the challenge as your skills evolve. Each level adapts its strategy and calculation depth.</p>
+        </div>
+        <div class="feature-card" data-aos>
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="14" cy="20" r="8"/>
+              <circle cx="26" cy="20" r="8"/>
+              <path d="M20 14v12" stroke-dasharray="2 2"/>
+            </svg>
+          </div>
+          <div class="feature-label">02</div>
+          <h3 class="feature-name">CHOOSE YOUR ALLEGIANCE</h3>
+          <p class="feature-desc">Play as White, Black, or Random. Choose your side before each match and develop strategies for every perspective.</p>
+        </div>
+        <div class="feature-card" data-aos>
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="20" cy="20" r="14"/>
+              <line x1="20" y1="10" x2="20" y2="20"/>
+              <line x1="20" y1="20" x2="28" y2="24"/>
+              <circle cx="20" cy="20" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="feature-label">03</div>
+          <h3 class="feature-name">TIMED MATCHES</h3>
+          <p class="feature-desc">Real-time chess clock. Test your speed and precision under pressure with configurable time controls.</p>
+        </div>
+        <div class="feature-card" data-aos>
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="6" y="6" width="28" height="28" rx="2"/>
+              <line x1="6" y1="6" x2="34" y2="6" stroke-width="3"/>
+              <line x1="10" y1="14" x2="30" y2="14" stroke-dasharray="3 2"/>
+              <line x1="10" y1="20" x2="30" y2="20" stroke-dasharray="3 2"/>
+              <line x1="10" y1="26" x2="24" y2="26" stroke-dasharray="3 2"/>
+            </svg>
+          </div>
+          <div class="feature-label">04</div>
+          <h3 class="feature-name">RETRO AESTHETICS</h3>
+          <p class="feature-desc">CRT scanlines, voxel art, pixel engine rendering. A visual experience that fuses nostalgia with modern performance.</p>
+        </div>
+        <div class="feature-card" data-aos>
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="20" cy="16" r="4"/>
+              <path d="M12 30c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+              <line x1="30" y1="12" x2="34" y2="8"/>
+              <line x1="30" y1="8" x2="34" y2="8"/>
+              <line x1="34" y1="8" x2="34" y2="12"/>
+            </svg>
+          </div>
+          <div class="feature-label">05</div>
+          <h3 class="feature-name">SYSTEM CONFIG</h3>
+          <p class="feature-desc">Customize audio matrix, toggle CRT scanlines, enable move predictions. Full control over your experience.</p>
+        </div>
+        <div class="feature-card" data-aos>
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 32 L14 18 L20 24 L26 10 L32 16"/>
+              <circle cx="32" cy="16" r="3" fill="currentColor"/>
+              <line x1="8" y1="36" x2="34" y2="36"/>
+            </svg>
+          </div>
+          <div class="feature-label">06</div>
+          <h3 class="feature-name">RANKING SYSTEM</h3>
+          <p class="feature-desc">Track your progress through the ranks. See your improvement over time. Compete against your personal best.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots Section -->
+  <section class="screenshots" id="screenshots">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// VISUAL FEED</span>
+        <h2 class="section-title">SYSTEM <span class="text-green">PREVIEW</span></h2>
+      </div>
+      <div class="screenshots-track">
+        <div class="screenshot-item">
+          <div class="phone-frame">
+            <div class="phone-frame-notch"></div>
+            <div class="phone-frame-screen">
+              <img src="assets/screenshot-menu.jpg" alt="Main menu screen showing voxel knight chess piece" loading="lazy">
+            </div>
+          </div>
+          <span class="screenshot-label">MAIN_MENU.exe</span>
+        </div>
+        <div class="screenshot-item">
+          <div class="phone-frame">
+            <div class="phone-frame-notch"></div>
+            <div class="phone-frame-screen">
+              <img src="assets/screenshot-settings.jpg" alt="Game initialization settings with difficulty levels" loading="lazy">
+            </div>
+          </div>
+          <span class="screenshot-label">INITIALIZE.exe</span>
+        </div>
+        <div class="screenshot-item">
+          <div class="phone-frame">
+            <div class="phone-frame-notch"></div>
+            <div class="phone-frame-screen">
+              <img src="assets/screenshot-gameplay.jpg" alt="Chess gameplay showing board with timer and move indicator" loading="lazy">
+            </div>
+          </div>
+          <span class="screenshot-label">GAMEPLAY.exe</span>
+        </div>
+        <div class="screenshot-item">
+          <div class="phone-frame">
+            <div class="phone-frame-notch"></div>
+            <div class="phone-frame-screen">
+              <img src="assets/screenshot-config.jpg" alt="System config showing audio matrix and visual toggles" loading="lazy">
+            </div>
+          </div>
+          <span class="screenshot-label">SYS_CONFIG.exe</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog" id="blog">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// TACTICAL DATABASE</span>
+        <h2 class="section-title">CHESS <span class="text-green">INTEL</span></h2>
+      </div>
+      <div class="blog-grid">
+        <a href="#" class="blog-card" data-aos>
+          <div class="blog-tag">OPENING THEORY</div>
+          <h3 class="blog-title">The Italian Game: A Beginner's Guide to Dominating the Board Early</h3>
+          <p class="blog-excerpt">Master one of the oldest and most popular chess openings. Learn the key moves, common traps, and how to build a strong position from move one.</p>
+          <div class="blog-meta">
+            <span class="blog-date">2026.04.10</span>
+            <span class="blog-read">5 MIN READ</span>
+          </div>
+        </a>
+        <a href="#" class="blog-card" data-aos>
+          <div class="blog-tag">TACTICS</div>
+          <h3 class="blog-title">5 Fork Patterns Every Chess Player Must Know</h3>
+          <p class="blog-excerpt">The fork is one of the most devastating tactical weapons. Learn the knight fork, bishop fork, and the deadly queen fork patterns that win games.</p>
+          <div class="blog-meta">
+            <span class="blog-date">2026.04.08</span>
+            <span class="blog-read">7 MIN READ</span>
+          </div>
+        </a>
+        <a href="#" class="blog-card" data-aos>
+          <div class="blog-tag">IMPROVEMENT</div>
+          <h3 class="blog-title">How to Analyze Your Chess Games and Actually Improve</h3>
+          <p class="blog-excerpt">Playing more games won't make you better. Learn the systematic approach to post-game analysis that grandmasters use to find weaknesses and level up.</p>
+          <div class="blog-meta">
+            <span class="blog-date">2026.04.05</span>
+            <span class="blog-read">6 MIN READ</span>
+          </div>
+        </a>
+        <a href="#" class="blog-card" data-aos>
+          <div class="blog-tag">ENDGAME</div>
+          <h3 class="blog-title">King and Pawn Endgames: The Fundamentals You Keep Getting Wrong</h3>
+          <p class="blog-excerpt">Most players lose endgames they should win. Master opposition, key squares, and the rule of the square to convert your advantages into victories.</p>
+          <div class="blog-meta">
+            <span class="blog-date">2026.04.02</span>
+            <span class="blog-read">8 MIN READ</span>
+          </div>
+        </a>
+        <a href="#" class="blog-card" data-aos>
+          <div class="blog-tag">NEWS</div>
+          <h3 class="blog-title">AI vs Humans in 2026: Where Chess Engines Stand Today</h3>
+          <p class="blog-excerpt">From Deep Blue to modern neural networks. How chess AI has evolved and what it means for human players learning the game in the age of machines.</p>
+          <div class="blog-meta">
+            <span class="blog-date">2026.03.28</span>
+            <span class="blog-read">6 MIN READ</span>
+          </div>
+        </a>
+        <a href="#" class="blog-card" data-aos>
+          <div class="blog-tag">STRATEGY</div>
+          <h3 class="blog-title">Pawn Structure Mastery: How to Read the Board Like a GM</h3>
+          <p class="blog-excerpt">Pawns are the soul of chess. Learn to identify isolated, doubled, passed, and backward pawns — and how each structure dictates your entire strategy.</p>
+          <div class="blog-meta">
+            <span class="blog-date">2026.03.24</span>
+            <span class="blog-read">7 MIN READ</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <h2 class="about-title">READY TO <span class="text-green">BOOT</span>?</h2>
+        <p class="about-desc">Download Voxel Chess and start your first session. The Machine is waiting.</p>
+        <div class="hero-buttons" style="justify-content: center;">
+          <a href="#" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span>Download on iOS</span>
+          </a>
+          <a href="#" class="btn btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.04L14.27 12 3.18.96 2.1 2.04 12.04 12 2.1 21.96l1.08 1.08z"/><path d="M20.36 23.04L21.44 21.96 11.5 12l9.94-9.96L20.36.96 9.27 12l11.09 11.04z"/></svg>
+            <span>Get it on Android</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="footer-logo" viewBox="0 0 32 32" width="24" height="24" fill="none" aria-label="Pixel Engine logo">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 22V14l6-6 6 6v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="12" r="2" fill="currentColor"/>
+            <line x1="13" y1="18" x2="19" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>&copy;1994 PIXEL ENGINE</span>
+        </div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="Discord">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-status">
+          <span class="status-dot"></span>
+          ALL SYSTEMS OPERATIONAL
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
