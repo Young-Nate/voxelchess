@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess Intel — Tactical Database | Voxel Chess Blog</title>
+  <meta name="description" content="Chess strategy, tactics, openings, endgames, and news from the Voxel Chess team. Level up your game with expert guides and analysis.">
+  <meta name="keywords" content="chess blog, chess strategy, chess tactics, chess openings, chess improvement, voxel chess">
+  <meta name="author" content="Pixel Engine">
+  <link rel="canonical" href="https://voxelchess.app/blog/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Chess Intel — Tactical Database | Voxel Chess">
+  <meta property="og:description" content="Chess strategy, tactics, openings, endgames, and news from the Voxel Chess team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://voxelchess.app/blog/">
+  <meta property="og:image" content="https://voxelchess.app/assets/screenshot-menu.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chess Intel — Tactical Database | Voxel Chess">
+  <meta name="twitter:description" content="Chess strategy, tactics, openings, endgames, and news from the Voxel Chess team.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #00ff66;
+      --green-dim: #00cc52;
+      --green-glow: rgba(0, 255, 102, 0.15);
+      --green-glow-strong: rgba(0, 255, 102, 0.3);
+      --bg: #0a0a0a;
+      --bg2: #0f0f0f;
+      --bg3: #141414;
+      --border: rgba(0, 255, 102, 0.2);
+      --border-dim: rgba(255, 255, 255, 0.06);
+      --text: #e8e8e8;
+      --text-dim: #666;
+      --text-muted: #444;
+      --font: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Scanline overlay */
+    .scanline-overlay {
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.08) 3px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Grid background */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,102,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,102,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,10,10,0.95);
+      border-bottom: 1px solid var(--border-dim);
+      backdrop-filter: blur(8px);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--green);
+    }
+    .nav-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links a.active { color: var(--green); }
+    .nav-cta {
+      background: var(--green) !important;
+      color: #000 !important;
+      padding: 7px 16px;
+      border-radius: 2px;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* Page wrapper */
+    .page-content {
+      position: relative;
+      z-index: 1;
+      padding-top: 64px;
+    }
+
+    /* Hero */
+    .blog-hero {
+      padding: 72px 24px 56px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-dim);
+      position: relative;
+    }
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 200px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+    }
+    .blog-hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .blog-hero-title {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: #fff;
+      text-shadow: 0 0 40px rgba(0,255,102,0.4), 0 0 80px rgba(0,255,102,0.15);
+      margin-bottom: 12px;
+    }
+    .blog-hero-sub {
+      font-size: 13px;
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+    }
+
+    /* Blog grid */
+    .blog-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+
+    .blog-card {
+      display: block;
+      background: var(--bg2);
+      border: 1px solid var(--border-dim);
+      border-radius: 4px;
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--green);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .blog-card:hover {
+      border-color: var(--border);
+      box-shadow: 0 0 24px var(--green-glow), 0 4px 24px rgba(0,0,0,0.4);
+      transform: translateY(-2px);
+    }
+    .blog-card:hover::before { transform: scaleX(1); }
+
+    .blog-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--green);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    .blog-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+    }
+
+    .blog-excerpt {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      border-top: 1px solid var(--border-dim);
+      padding-top: 16px;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+    .read-more::after { content: '→'; }
+
+    /* Footer */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border-dim);
+      padding: 32px 24px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-dim);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--green); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 16px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-dim);
+      text-align: center;
+    }
+    .footer-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+    }
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline-overlay" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <svg viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="Voxel Chess logo">
+          <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M10 22V14l6-6 6 6v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="12" r="2" fill="currentColor"/>
+          <line x1="13" y1="18" x2="19" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-title">VOXEL CHESS</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#screenshots">Screenshots</a>
+        <a href="/blog/" class="active">Blog</a>
+        <a href="/#" class="nav-cta">Download</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <!-- Hero -->
+    <div class="blog-hero">
+      <div class="blog-hero-tag">// TACTICAL DATABASE</div>
+      <h1 class="blog-hero-title">CHESS INTEL</h1>
+      <p class="blog-hero-sub">// STRATEGY · TACTICS · THEORY · NEWS</p>
+    </div>
+
+    <!-- Blog Grid -->
+    <section class="blog-section">
+      <div class="blog-grid">
+
+        <a href="/blog/italian-game-beginners-guide/" class="blog-card">
+          <div class="blog-tag">OPENING THEORY</div>
+          <h2 class="blog-card-title">The Italian Game: A Beginner's Guide to Dominating the Board Early</h2>
+          <p class="blog-excerpt">Master one of the oldest and most popular chess openings. Learn the key moves, common traps, and how to build a strong position from move one.</p>
+          <div class="blog-meta">
+            <span>2026.04.10</span>
+            <span>5 MIN READ</span>
+          </div>
+          <div class="read-more">READ_MORE</div>
+        </a>
+
+        <a href="/blog/fork-patterns-chess/" class="blog-card">
+          <div class="blog-tag">TACTICS</div>
+          <h2 class="blog-card-title">5 Fork Patterns Every Chess Player Must Know</h2>
+          <p class="blog-excerpt">The fork is one of the most devastating tactical weapons. Learn the knight fork, bishop fork, and the deadly queen fork patterns that win games.</p>
+          <div class="blog-meta">
+            <span>2026.04.08</span>
+            <span>7 MIN READ</span>
+          </div>
+          <div class="read-more">READ_MORE</div>
+        </a>
+
+        <a href="/blog/analyze-chess-games-improve/" class="blog-card">
+          <div class="blog-tag">IMPROVEMENT</div>
+          <h2 class="blog-card-title">How to Analyze Your Chess Games and Actually Improve</h2>
+          <p class="blog-excerpt">Playing more games won't make you better. Learn the systematic approach to post-game analysis that grandmasters use to find weaknesses and level up.</p>
+          <div class="blog-meta">
+            <span>2026.04.05</span>
+            <span>6 MIN READ</span>
+          </div>
+          <div class="read-more">READ_MORE</div>
+        </a>
+
+        <a href="/blog/king-pawn-endgame-fundamentals/" class="blog-card">
+          <div class="blog-tag">ENDGAME</div>
+          <h2 class="blog-card-title">King and Pawn Endgames: The Fundamentals You Keep Getting Wrong</h2>
+          <p class="blog-excerpt">Most players lose endgames they should win. Master opposition, key squares, and the rule of the square to convert your advantages into victories.</p>
+          <div class="blog-meta">
+            <span>2026.04.02</span>
+            <span>8 MIN READ</span>
+          </div>
+          <div class="read-more">READ_MORE</div>
+        </a>
+
+        <a href="/blog/ai-vs-humans-chess-2026/" class="blog-card">
+          <div class="blog-tag">NEWS</div>
+          <h2 class="blog-card-title">AI vs Humans in 2026: Where Chess Engines Stand Today</h2>
+          <p class="blog-excerpt">From Deep Blue to modern neural networks. How chess AI has evolved and what it means for human players learning the game in the age of machines.</p>
+          <div class="blog-meta">
+            <span>2026.03.28</span>
+            <span>6 MIN READ</span>
+          </div>
+          <div class="read-more">READ_MORE</div>
+        </a>
+
+        <a href="/blog/pawn-structure-mastery/" class="blog-card">
+          <div class="blog-tag">STRATEGY</div>
+          <h2 class="blog-card-title">Pawn Structure Mastery: How to Read the Board Like a GM</h2>
+          <p class="blog-excerpt">Pawns are the soul of chess. Learn to identify isolated, doubled, passed, and backward pawns — and how each structure dictates your entire strategy.</p>
+          <div class="blog-meta">
+            <span>2026.03.24</span>
+            <span>7 MIN READ</span>
+          </div>
+          <div class="read-more">READ_MORE</div>
+        </a>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg viewBox="0 0 32 32" width="24" height="24" fill="none" aria-label="Pixel Engine logo">
+          <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M10 22V14l6-6 6 6v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="12" r="2" fill="currentColor"/>
+          <line x1="13" y1="18" x2="19" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>&copy;1994 PIXEL ENGINE</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-status">
+        <span class="status-dot"></span>
+        ALL SYSTEMS OPERATIONAL
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
