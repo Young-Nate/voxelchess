@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Improve Your Chess Rating: A 30-Day Training Plan (Beginner to Intermediate) | Voxel Chess</title>
+  <meta name="description" content="A practical 30-day chess training plan to raise your rating: tactics routine, opening choices, endgame basics, game analysis, time management, and psychology." />
+  <link rel="canonical" href="https://voxelchess.app/blog/how-to-improve-chess-rating-30-day-training-plan/" />
+
+  <meta property="og:title" content="How to Improve Your Chess Rating: A 30-Day Training Plan (Beginner to Intermediate)" />
+  <meta property="og:description" content="A practical 30-day plan to raise your chess rating: tactics, openings, endgames, analysis, time management, and mindset." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://voxelchess.app/blog/how-to-improve-chess-rating-30-day-training-plan/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: rgba(255,255,255,0.04);
+      --text: rgba(255,255,255,0.88);
+      --muted: rgba(255,255,255,0.62);
+      --accent: #00ff66;
+      --accent2: #00c94f;
+      --border: rgba(0,255,102,0.22);
+      --shadow: 0 12px 40px rgba(0,0,0,0.55);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(0,255,102,0.12), transparent 50%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(0,255,102,0.08), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .crt::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        rgba(0,0,0,0) 3px,
+        rgba(0,0,0,0) 6px
+      );
+      mix-blend-mode: overlay;
+      opacity: 0.35;
+      z-index: 1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(10,10,10,0.75);
+      border-bottom: 1px solid rgba(0,255,102,0.18);
+    }
+    .navwrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+    .logo-badge {
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(0,255,102,0.55);
+    }
+    nav a {
+      margin-left: 16px;
+      color: var(--text);
+      opacity: 0.9;
+      font-weight: 600;
+    }
+    nav a:hover { color: var(--accent); opacity: 1; }
+
+    main {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 44px 18px 56px;
+    }
+    .hero {
+      background: linear-gradient(180deg, rgba(0,255,102,0.10), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
+    }
+    .kicker {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+    h1 {
+      font-size: 30px;
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .meta span { opacity: 0.95; }
+
+    article {
+      margin-top: 26px;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+    }
+    h2 {
+      margin-top: 30px;
+      font-size: 20px;
+      color: rgba(255,255,255,0.92);
+    }
+    h3 {
+      margin-top: 18px;
+      font-size: 16px;
+      color: rgba(255,255,255,0.90);
+    }
+    ul { padding-left: 20px; }
+    li { margin: 6px 0; }
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: rgba(0,255,102,0.06);
+      padding: 14px 14px 14px 16px;
+      border-radius: 10px;
+      margin: 18px 0;
+      color: rgba(255,255,255,0.88);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin: 16px 0 6px;
+    }
+    .card {
+      grid-column: span 12;
+      border: 1px solid rgba(0,255,102,0.18);
+      background: rgba(0,0,0,0.22);
+      border-radius: 14px;
+      padding: 14px 14px;
+    }
+    @media (min-width: 780px) {
+      .card.half { grid-column: span 6; }
+    }
+    .card-title { color: var(--accent); font-weight: 800; margin: 0 0 6px; }
+
+    .cta {
+      margin-top: 30px;
+      padding: 18px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,255,102,0.28);
+      background: linear-gradient(180deg, rgba(0,255,102,0.10), rgba(0,0,0,0.22));
+    }
+    .cta a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: rgba(0,255,102,0.12);
+      border: 1px solid rgba(0,255,102,0.35);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 22px 18px 38px;
+      color: rgba(255,255,255,0.55);
+      border-top: 1px solid rgba(0,255,102,0.18);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Improve Your Chess Rating: A 30-Day Training Plan (Beginner to Intermediate)",
+    "description": "A practical 30-day chess training plan to raise your rating: tactics routine, opening choices, endgame basics, game analysis, time management, and psychology.",
+    "author": {"@type": "Organization", "name": "Pixel Engine"},
+    "publisher": {"@type": "Organization", "name": "Pixel Engine"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://voxelchess.app/blog/how-to-improve-chess-rating-30-day-training-plan/"},
+    "datePublished": "2026-04-21",
+    "dateModified": "2026-04-21",
+    "inLanguage": "en"
+  }
+  </script>
+</head>
+
+<body class="crt">
+  <header>
+    <div class="navwrap">
+      <div class="logo" aria-label="Voxel Chess">
+        <span class="logo-badge" aria-hidden="true"></span>
+        <span>VOXEL CHESS</span>
+      </div>
+      <nav>
+        <a href="/" >Features</a>
+        <a href="/#screenshots">Screenshots</a>
+        <a href="/blog/">Blog</a>
+        <a href="/" >Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="kicker">Rating Improvement</p>
+      <h1>How to Improve Your Chess Rating: A 30-Day Training Plan (Beginner to Intermediate)</h1>
+      <p>
+        If you feel like your chess rating is stuck, you probably don’t need “more chess” — you need a <strong>repeatable system</strong>.
+        This 30-day plan is designed for players who know the rules, can spot simple tactics, and want a clear path to steadier wins.
+        You’ll train tactics without burning out, tighten your opening choices, learn the endgames that decide most games, and build a habit of analysis.
+      </p>
+      <div class="meta">
+        <span><strong>Read time:</strong> ~9 minutes</span>
+        <span><strong>Skill level:</strong> Beginner → Intermediate</span>
+        <span><strong>Focus:</strong> Tactics + endgames + analysis</span>
+      </div>
+    </section>
+
+    <article>
+      <h2>What actually raises a chess rating?</h2>
+      <p>
+        Ratings don’t rise because you “study a lot.” They rise because your <strong>blunder rate drops</strong>, your <strong>tactical conversion improves</strong>,
+        and you start making <strong>repeatably good decisions</strong> in the same positions.
+        The fastest way to do that is to train three things in parallel:
+      </p>
+      <ul>
+        <li><strong>Pattern recognition</strong> (tactics, typical mates, forks, pins, skewers).</li>
+        <li><strong>Technical ability</strong> (simple endgames, basic rook play, king activity).</li>
+        <li><strong>Decision quality</strong> (candidate moves, calculation discipline, time management).</li>
+      </ul>
+      <div class="callout">
+        Your goal for the next 30 days: build a routine you can keep.
+        Consistency beats “one big weekend of studying” every time.
+      </div>
+
+      <h2>The 30-day plan (overview)</h2>
+      <p>
+        Each day takes 30–60 minutes. If you have more time, add it to <em>game analysis</em> — that’s where improvement compounds.
+      </p>
+
+      <div class="grid">
+        <div class="card half">
+          <p class="card-title">Daily (Days 1–30)</p>
+          <ul>
+            <li>10–20 minutes tactics</li>
+            <li>1 focused game (10+5 or slower)</li>
+            <li>10 minutes quick review</li>
+          </ul>
+        </div>
+        <div class="card half">
+          <p class="card-title">Weekly (Days 7, 14, 21, 28)</p>
+          <ul>
+            <li>Deep analysis of 2 games</li>
+            <li>Endgame mini-test</li>
+            <li>Adjust openings & goals</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Days 1–7: Build the base (stop the bleeding)</h2>
+      <h3>1) Tactics routine: quality over quantity</h3>
+      <p>
+        For rating improvement, tactics are the highest ROI. But don’t grind hundreds of random puzzles.
+        Instead, train like this:
+      </p>
+      <ul>
+        <li><strong>Set a small daily target</strong>: 10 puzzles with full focus (or 15 minutes on a timer).</li>
+        <li><strong>Calculate before moving</strong>: name the threat, list candidate moves, then calculate 2–4 ply.</li>
+        <li><strong>Log your misses</strong>: fork missed, back-rank mate missed, hanging piece, etc.</li>
+      </ul>
+      <p>
+        If you like pattern-based training, revisit the fork theme — it wins games quickly.
+        (If you haven’t read it yet, start with <a href="/blog/fork-patterns-chess/">Fork Patterns in Chess</a>.)
+      </p>
+
+      <h3>2) Play one slower game per day</h3>
+      <p>
+        Blitz can be fun, but it hides problems. A single 10+5 (or slower) game gives you time to practice a real thinking process.
+        In <strong>Voxel Chess</strong>, you can set a difficulty that feels “winnable but stressful” and replay the same plan until it sticks.
+      </p>
+
+      <h3>3) The 30-second blunder check (every move)</h3>
+      <p>
+        Before you play your move, ask:
+      </p>
+      <ul>
+        <li>What is my opponent threatening right now?</li>
+        <li>Is any of my piece en prise (hanging)?</li>
+        <li>If I move, do I expose a back rank, a pin, or a fork?</li>
+      </ul>
+      <div class="callout">
+        Most rating gains at beginner/intermediate level come from simply hanging fewer pieces.
+      </div>
+
+      <h2>Days 8–14: Openings that are easy to play (not “best”)</h2>
+      <p>
+        Openings don’t win games by themselves — but they can put you into positions you understand.
+        Choose a small repertoire:
+      </p>
+      <ul>
+        <li><strong>As White</strong>: 1 main setup (e.g., Italian Game, London System, or Queen’s Gambit ideas).</li>
+        <li><strong>As Black vs 1.e4</strong>: 1 defense you can explain in words.</li>
+        <li><strong>As Black vs 1.d4</strong>: 1 defense you can explain in words.</li>
+      </ul>
+      <p>
+        The key: learn plans, not memorized move orders. If you’re playing 1.e4 and want a practical starting point,
+        the <a href="/blog/italian-game-beginners-guide/">Italian Game Beginner’s Guide</a> is a clean foundation.
+      </p>
+
+      <h3>Opening practice method (10 minutes)</h3>
+      <ul>
+        <li>Pick one line you see often.</li>
+        <li>Write down the first 6–10 moves.</li>
+        <li>Write the plan: which pawn breaks, where pieces belong, what trade you want.</li>
+      </ul>
+
+      <h2>Days 15–21: Endgames that decide real games</h2>
+      <p>
+        Players avoid endgames, but endgames are where you learn piece activity, king safety, and conversion.
+        Focus on the endgames you’ll see the most.
+      </p>
+
+      <h3>1) King + pawn fundamentals</h3>
+      <p>
+        Start with key squares, opposition, and converting an extra pawn.
+        If you want a structured primer, read <a href="/blog/king-pawn-endgame-fundamentals/">King + Pawn Endgame Fundamentals</a>.
+      </p>
+
+      <h3>2) Rook endgames (the two core positions)</h3>
+      <p>
+        Learn Lucena (winning) and Philidor (drawing) patterns.
+        They show up constantly when players trade down.
+        Reference: <a href="/blog/rook-endgames-lucena-philidor-beginners/">Rook Endgames: Lucena &amp; Philidor</a>.
+      </p>
+
+      <h3>3) Pawn structures: learn one structure well</h3>
+      <p>
+        Pawn structure knowledge is like a map: it tells you where to attack, what squares matter, and which pieces to trade.
+        If you want a clear framework, review <a href="/blog/pawn-structure-mastery/">Pawn Structure Mastery</a>.
+      </p>
+
+      <p>
+        Practice this against the Machine in <strong>Voxel Chess</strong> by intentionally trading into endgames and trying to convert with clean technique.
+        Even if you lose, you’ll build confidence in positions most opponents mishandle.
+      </p>
+
+      <h2>Days 22–30: Analysis, psychology, and converting advantages</h2>
+      <h3>1) A simple post-game analysis checklist</h3>
+      <p>
+        After every game, answer these questions (write them down):
+      </p>
+      <ul>
+        <li>Where was my first big mistake? What did I miss?</li>
+        <li>What was the critical tactical moment?</li>
+        <li>What endgame or pawn structure did I reach?</li>
+        <li>Did I manage my clock well?</li>
+      </ul>
+      <p>
+        If you need a method for reviewing games quickly and deeply, this complements
+        <a href="/blog/analyze-chess-games-improve/">How to Analyze Chess Games to Improve</a>.
+      </p>
+
+      <h3>2) Time management: pick a “thinking budget”</h3>
+      <p>
+        Many players lose on time because they spend 3 minutes on a random move and then blitz the critical position.
+        Try this rule:
+      </p>
+      <ul>
+        <li><strong>Use time</strong> in sharp positions (tactics, king attacks, sacrifices).</li>
+        <li><strong>Play quickly</strong> in forced or familiar positions (recaptures, obvious development).</li>
+        <li><strong>Never go below</strong> 20% of your clock before move 20 unless it’s a forced sequence.</li>
+      </ul>
+
+      <h3>3) “Anti-tilt” routine: protect your next game</h3>
+      <p>
+        Rating climbs are ruined by tilt. When you lose:
+      </p>
+      <ul>
+        <li>Stand up for 2 minutes.</li>
+        <li>Write one sentence: “I lost because …”</li>
+        <li>Do one easy puzzle to reset confidence.</li>
+      </ul>
+      <p>
+        If you’re training specifically versus engines, see
+        <a href="/blog/how-to-beat-chess-computer-practical-anti-engine-strategy/">How to Beat a Chess Computer</a> — computers punish tilt instantly.
+      </p>
+
+      <h2>A practical weekly benchmark (to prove you’re improving)</h2>
+      <p>
+        Once per week, run this mini-test:
+      </p>
+      <ul>
+        <li><strong>Tactics:</strong> 20 minutes, track accuracy and types of misses.</li>
+        <li><strong>Endgame:</strong> play a king+pawn position from both sides.</li>
+        <li><strong>One “serious” game:</strong> 15+10 or longer, then deep analyze.</li>
+      </ul>
+      <div class="callout">
+        If your accuracy improves and your blunders drop, the rating will follow.
+      </div>
+
+      <h2>Common traps that keep ratings stuck</h2>
+      <h3>Trap #1: Changing openings every week</h3>
+      <p>
+        Stick with a small repertoire for at least a month.
+        Opening familiarity saves time, reduces blunders, and helps you learn middlegame plans.
+      </p>
+
+      <h3>Trap #2: Only playing fast games</h3>
+      <p>
+        Fast games train your instincts, but slow games train your thinking.
+        You need both — but improvement starts with slower games.
+      </p>
+
+      <h3>Trap #3: “Studying” without feedback</h3>
+      <p>
+        Studying becomes powerful only when it changes decisions in your next game.
+        Use analysis to connect mistakes to a concrete next-step drill.
+      </p>
+
+      <div class="cta">
+        <strong>Ready to test your skills? Download Voxel Chess.</strong>
+        <div>
+          Practice this 30-day plan against 10 difficulty levels — from Human to Machine God — and build real confidence under pressure.
+        </div>
+        <a href="/">Download Voxel Chess</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>©1994 PIXEL ENGINE</div>
+      <div>
+        <a href="/">Home</a> · <a href="/blog/">Blog</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
