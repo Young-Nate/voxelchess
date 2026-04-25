@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>How to Defend Against a Kingside Attack in Chess: 9 Practical Rules | Voxel Chess</title>
+  <meta name="description" content="Learn how to defend against a kingside attack in chess with clear, practical rules: spot the attacker’s plan, stop key sacrifices, trade attackers, and simplify into a winning endgame." />
+  <link rel="canonical" href="https://voxelchess.app/blog/how-to-defend-against-a-kingside-attack/" />
+
+  <meta property="og:title" content="How to Defend Against a Kingside Attack in Chess: 9 Practical Rules" />
+  <meta property="og:description" content="A practical guide to surviving (and punishing) kingside attacks: identify threats, stop sacrifices, trade attackers, and simplify at the right moment." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://voxelchess.app/blog/how-to-defend-against-a-kingside-attack/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="How to Defend Against a Kingside Attack in Chess: 9 Practical Rules" />
+  <meta name="twitter:description" content="Defensive technique for real games: stop key sacrifices, trade attackers, and simplify." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --panel:#0f0f0f;
+      --text:#e6e6e6;
+      --muted:#a7a7a7;
+      --accent:#00ff66;
+      --accent2:#00c853;
+      --border:rgba(0,255,102,.18);
+      --shadow: 0 0 0 1px var(--border), 0 20px 60px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: radial-gradient(900px 500px at 15% 10%, rgba(0,255,102,.08), transparent 55%),
+                  radial-gradient(900px 500px at 85% 20%, rgba(0,255,102,.05), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:28px 18px 70px}
+
+    header{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(10px);
+      background: rgba(10,10,10,.78);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      max-width:980px; margin:0 auto; padding:14px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:220px}
+    .logo{
+      width:36px; height:36px; border:1px solid var(--border);
+      box-shadow: 0 0 18px rgba(0,255,102,.15);
+      background:
+        linear-gradient(135deg, rgba(0,255,102,.35), transparent 60%),
+        repeating-linear-gradient(0deg, rgba(0,255,102,.18), rgba(0,255,102,.18) 1px, transparent 1px, transparent 4px);
+      border-radius:6px;
+    }
+    .brand span{font-weight:800; letter-spacing:.12em}
+    .nav a{color:var(--text)}
+    .navlinks{display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-end}
+    .navlinks a{padding:8px 10px; border-radius:10px; border:1px solid transparent}
+    .navlinks a:hover{border-color:var(--border); background:rgba(0,255,102,.05)}
+
+    .hero{padding:28px 0 10px}
+    h1{font-size:34px; line-height:1.2; margin:14px 0 10px}
+    .meta{color:var(--muted); font-size:14px}
+
+    .panel{
+      background:linear-gradient(180deg, rgba(0,255,102,.04), transparent 42%), var(--panel);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .toc{margin-top:18px}
+    .toc strong{color:var(--accent)}
+    .toc ul{margin:10px 0 0 18px}
+    .toc li{margin:6px 0}
+
+    h2{margin:36px 0 10px; font-size:22px}
+    h3{margin:20px 0 8px; font-size:17px; color:var(--accent)}
+    p{margin:10px 0}
+    ul{margin:10px 0 10px 22px}
+
+    .rule{border-left:3px solid var(--accent2); padding-left:14px; margin:18px 0}
+    .callout{
+      margin:22px 0;
+      padding:16px 18px;
+      border-radius:14px;
+      border:1px dashed var(--border);
+      background:rgba(0,255,102,.05);
+    }
+
+    .cta{
+      margin-top:34px;
+      padding:18px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background: linear-gradient(135deg, rgba(0,255,102,.12), rgba(0,0,0,0) 55%);
+      box-shadow: var(--shadow);
+    }
+    .cta a.btn{
+      display:inline-block;
+      margin-top:10px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(0,255,102,.10);
+      color:var(--text);
+      font-weight:700;
+    }
+
+    footer{
+      margin-top:60px;
+      padding-top:22px;
+      color:var(--muted);
+      border-top:1px solid var(--border);
+      text-align:center;
+      letter-spacing:.08em;
+    }
+
+    /* CRT scanline accent */
+    .scanlines:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        rgba(0,0,0,0) 3px,
+        rgba(0,0,0,0) 6px
+      );
+      mix-blend-mode: overlay;
+      opacity:.25;
+      z-index:5;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Defend Against a Kingside Attack in Chess: 9 Practical Rules",
+    "description": "Learn how to defend against a kingside attack in chess with clear, practical rules: spot the attacker’s plan, stop key sacrifices, trade attackers, and simplify into a winning endgame.",
+    "author": {"@type":"Organization","name":"Pixel Engine"},
+    "publisher": {"@type":"Organization","name":"Pixel Engine"},
+    "mainEntityOfPage": "https://voxelchess.app/blog/how-to-defend-against-a-kingside-attack/",
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25"
+  }
+  </script>
+</head>
+<body class="scanlines">
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>VOXEL CHESS</span>
+      </div>
+      <nav class="navlinks" aria-label="Primary">
+        <a href="/">Download</a>
+        <a href="/#features">Features</a>
+        <a href="/#screenshots">Screenshots</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="panel">
+        <p class="meta">April 25, 2026 · Defensive chess · Long-tail: <em>how to defend against a kingside attack in chess</em></p>
+        <h1>How to Defend Against a Kingside Attack in Chess: 9 Practical Rules</h1>
+        <p>
+          When the opponent starts aiming pieces at your king, it can feel like the board is shrinking.
+          But most “unstoppable” kingside attacks are only strong because the defender panics, misses the real threat,
+          or wastes a tempo on the wrong move.
+        </p>
+        <p>
+          This guide gives you a repeatable checklist for defense: how to recognize the attacker’s plan, which pieces to trade,
+          how to stop common sacrifices, and when to simplify.
+          If you play against the computer, these rules are even more valuable—machines punish passive defense fast.
+          Practice this against the Machine in <strong>Voxel Chess</strong> and you’ll start seeing defensive resources you didn’t know you had.
+        </p>
+
+        <div class="toc">
+          <strong>Quick jump</strong>
+          <ul>
+            <li><a href="#diagnose">1) Diagnose the attack: target, leverage, and sacrifice</a></li>
+            <li><a href="#rules">2) The 9 rules of defense (with examples)</a></li>
+            <li><a href="#sacs">3) Stopping common kingside sacrifices</a></li>
+            <li><a href="#counterplay">4) Counterplay: when to strike back</a></li>
+            <li><a href="#practice">5) A simple practice routine (human-friendly)</a></li>
+            <li><a href="#related">Related Voxel Chess guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="diagnose">
+      <h2>1) Diagnose the attack: target, leverage, and sacrifice</h2>
+      <p>
+        Before defending, identify the attacker’s <strong>actual</strong> win condition.
+        Kingside attacks usually revolve around one of three ideas:
+      </p>
+      <ul>
+        <li><strong>Mate net</strong>: delivering mate on g7/g2, h7/h2, or along the back rank.</li>
+        <li><strong>Decoy / deflection</strong>: forcing your king onto a bad square or pulling a defender away.</li>
+        <li><strong>Material win</strong>: winning a key piece after opening lines (often with a sacrifice).</li>
+      </ul>
+      <p>
+        Ask three questions:
+      </p>
+      <ul>
+        <li><strong>Where is the target square?</strong> (Typical: h7, g7, f7, or the g-file.)</li>
+        <li><strong>Which line is being opened?</strong> (g-file, h-file, diagonal b1–h7, diagonal a2–g8.)</li>
+        <li><strong>What sacrifice is “in the air”?</strong> (Bxh7+, Nxf7, Nxg7, Rxg7, or …Bxh2+.)</li>
+      </ul>
+      <div class="callout">
+        <strong>Defender mindset:</strong> you’re not trying to be “solid.” You’re trying to make the attacker’s idea fail.
+        The best defensive move is often active: a trade, a tempo-gaining threat, or a prophylactic square control.
+      </div>
+    </section>
+
+    <section id="rules">
+      <h2>2) The 9 rules of defense (with examples)</h2>
+
+      <div class="rule" id="rule1">
+        <h3>Rule 1: Stop the last piece from joining</h3>
+        <p>
+          Most attacks only work when <em>all</em> of the attacker’s pieces participate.
+          Find the “latecomer” (often a rook on a8/h8, queen, or knight) and stop it.
+          Common methods: control key squares (like g5, f4), or play a tempo move that forces it back.
+        </p>
+      </div>
+
+      <div class="rule" id="rule2">
+        <h3>Rule 2: Trade attackers, not defenders</h3>
+        <p>
+          If you can exchange the opponent’s queen, a strong bishop, or a knight near your king, do it.
+          Your own pieces guarding the king are rarely the problem—your problem is their attacking pieces.
+          If you’re offered a queen trade while under pressure, take it unless there’s a concrete tactical refutation.
+        </p>
+      </div>
+
+      <div class="rule" id="rule3">
+        <h3>Rule 3: Control the “breaker” pawn</h3>
+        <p>
+          Kingside attacks often depend on a pawn break: <strong>…f5</strong>, <strong>…g5</strong>, <strong>h4–h5</strong>, or <strong>g4</strong>.
+          If you stop the break (or meet it correctly), the attack can collapse.
+          For example, if the opponent wants <em>g4</em> to open the g-file, your defensive plan may be:
+          keep g-pawn stable, meet g4 with hxg4 or h4, or trade on g4 at the right time.
+        </p>
+      </div>
+
+      <div class="rule" id="rule4">
+        <h3>Rule 4: Don’t “improve pieces” when you need one defensive move</h3>
+        <p>
+          Under attack, slow repositioning can be fatal.
+          If there is a direct threat (mate or decisive sacrifice), answer it directly.
+          A useful habit: after every opponent move, write the threat in your head as a sentence.
+          “They want …Bxh7+ and Qh5 mate.” If you can’t say it, you’re guessing.
+        </p>
+      </div>
+
+      <div class="rule" id="rule5">
+        <h3>Rule 5: When in doubt, close lines near your king</h3>
+        <p>
+          Open files and diagonals are fuel for the attacker.
+          If you can safely close the position (a pawn move that blocks a diagonal, or a capture that reduces open lines),
+          you often buy critical tempos.
+          Closing is not always correct—sometimes you must open lines for counterplay—but as a default defensive reaction,
+          closing lines around your king is sound.
+        </p>
+      </div>
+
+      <div class="rule" id="rule6">
+        <h3>Rule 6: Give back material to remove the attack</h3>
+        <p>
+          A common defensive error is “clinging” to a pawn or exchange while the king is getting mated.
+          If returning material allows a queen trade, removes a dangerous bishop, or shuts down a file, it’s usually worth it.
+          The evaluation is simple: <em>material doesn’t matter if you’re checkmated</em>.
+        </p>
+      </div>
+
+      <div class="rule" id="rule7">
+        <h3>Rule 7: Put a piece on the king’s escape square (or create one)</h3>
+        <p>
+          Many mates succeed because the king has no flight squares.
+          Either keep an escape square (like f8/f1, g7/g2, h7/h2 depending on structure), or create one with a pawn move.
+          Sometimes a small “luft” move (like …h6 or …g6) is the difference between safe and checkmated.
+          Just make sure it doesn’t enable a sacrifice.
+        </p>
+      </div>
+
+      <div class="rule" id="rule8">
+        <h3>Rule 8: If the attacker commits, calculate the forcing line</h3>
+        <p>
+          Defense is mostly pattern recognition—until the opponent sacrifices.
+          When they sacrifice, the position becomes forcing.
+          Pause, and calculate only checks, captures, and threats (CCT).
+          Your goal is to find the first moment where the attacker runs out of forcing moves.
+        </p>
+      </div>
+
+      <div class="rule" id="rule9">
+        <h3>Rule 9: The best defense is a threat on their king</h3>
+        <p>
+          Counterplay is not “hope chess.” It’s a threat that changes the attacker’s priorities.
+          If you can create a concrete threat (mate, queen win, back-rank tactic), their attack often slows down.
+          Especially versus engines, active counterplay is how you avoid getting squeezed.
+        </p>
+      </div>
+    </section>
+
+    <section id="sacs">
+      <h2>3) Stopping common kingside sacrifices</h2>
+      <p>
+        Many kingside attacks rely on classic sacrifices.
+        You don’t need to memorize endless theory—learn the conditions that make the sacrifice work.
+      </p>
+
+      <h3>Bxh7+ (or …Bxh2+) “Greek Gift” style ideas</h3>
+      <ul>
+        <li><strong>Watch the knight jump to g5</strong> (or g4 for Black): it’s often the key attacker.</li>
+        <li><strong>Check the defender count</strong>: can you capture the knight after it checks on g5/g4?</li>
+        <li><strong>Is your queen close enough to help?</strong> If your queen is far, the sacrifice is more dangerous.</li>
+        <li><strong>Can you run to f8/f1?</strong> If the king has an escape route, the sacrifice often fails.</li>
+      </ul>
+      <p>
+        Practical defense: when you sense the pattern, prioritize moves that stop the knight jump (like …h6),
+        or that enable a queen trade.
+      </p>
+
+      <h3>Ng5 / Qh5 mate threats</h3>
+      <p>
+        The simplest version is a direct mate threat on f7 (or f2) and h7 (or h2).
+        Defenses include:
+      </p>
+      <ul>
+        <li><strong>Cover h7/h2</strong> with a piece or move your king if castling is unsafe.</li>
+        <li><strong>Meet Qh5 with …g6</strong> only if it doesn’t lose instantly to a sacrifice on g6.</li>
+        <li><strong>Trade queens</strong> if possible—this kills the attack at once.</li>
+      </ul>
+
+      <h3>Rook lifts and doubled rooks on the g-file</h3>
+      <p>
+        If you see a rook lift (like Re3–g3 or …Rh6), you should treat it as a warning.
+        Your defense is to contest the file early (place a rook on g8/g1), or to keep the g-file closed.
+      </p>
+    </section>
+
+    <section id="counterplay">
+      <h2>4) Counterplay: when to strike back</h2>
+      <p>
+        Counterplay works when it’s <strong>forcing</strong>.
+        Typical counterplay targets:
+      </p>
+      <ul>
+        <li><strong>Their king</strong>: a threat that demands a response.</li>
+        <li><strong>Their queen</strong>: a discovered attack, tempo on the queen, or a skewer.</li>
+        <li><strong>The center</strong>: if they attack on the flank, the center can be fragile.</li>
+      </ul>
+      <p>
+        The key is timing.
+        If you have a move that stops mate <em>and</em> creates a threat, that’s ideal.
+        If you can’t stop mate, counterplay is irrelevant.
+      </p>
+      <div class="callout">
+        Against the computer, don’t assume it will miss your defense.
+        Use <strong>Voxel Chess</strong> difficulty levels to test what holds up: start at a manageable level,
+        then climb until your defensive habits break.
+      </div>
+    </section>
+
+    <section id="practice">
+      <h2>5) A simple practice routine (human-friendly)</h2>
+      <p>
+        To improve quickly, train defense like tactics: short, focused reps.
+        Here’s a 15-minute routine you can do daily.
+      </p>
+      <h3>Step A: 5 minutes — identify the threat</h3>
+      <ul>
+        <li>Set up a middlegame position (from your own games or a random puzzle).</li>
+        <li>Before moving, say: “Their threat is …”</li>
+        <li>List candidate defenses: trade, block, run, counterattack.</li>
+      </ul>
+
+      <h3>Step B: 5 minutes — calculate one forcing line</h3>
+      <ul>
+        <li>Assume the attacker sacrifices. Calculate checks/captures/threats only.</li>
+        <li>Find the first “quiet” move where the attacker has no forcing continuation.</li>
+      </ul>
+
+      <h3>Step C: 5 minutes — play it out vs the Machine</h3>
+      <p>
+        Load the position and play defense versus the computer.
+        If you have <strong>Voxel Chess</strong>, this is perfect training: the Machine will punish passive moves,
+        and you can repeat the same defensive theme at different difficulty levels until it becomes automatic.
+      </p>
+    </section>
+
+    <section id="related">
+      <h2>Related Voxel Chess guides</h2>
+      <ul>
+        <li><a href="/blog/how-to-improve-chess-rating-30-day-training-plan/">How to Improve Your Chess Rating: a 30-Day Training Plan</a></li>
+        <li><a href="/blog/pawn-structure-mastery/">Pawn Structure Mastery: How to Make Plans from the Pawn Skeleton</a></li>
+        <li><a href="/blog/fork-patterns-chess/">Fork Patterns in Chess: How to Spot (and Set) the Deadliest Double Attacks</a></li>
+      </ul>
+    </section>
+
+    <section class="cta" aria-label="Call to action">
+      <h2>Ready to test your skills? Download Voxel Chess</h2>
+      <p>
+        The fastest way to learn defense is to face real pressure, make mistakes, and try again.
+        Voxel Chess gives you a retro-cyberpunk board, CRT scanlines, and 10 difficulty levels—from Human to Machine God—
+        so you can practice these defensive rules at the exact intensity you need.
+      </p>
+      <a class="btn" href="/">Download Voxel Chess</a>
+    </section>
+
+    <footer>
+      ©1994 PIXEL ENGINE
+    </footer>
+  </main>
+</body>
+</html>
