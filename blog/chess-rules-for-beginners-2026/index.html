@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chess Rules for Beginners (2026): Learn in 15 Minutes</title>
+  <meta name="description" content="Learn chess rules fast: how pieces move, check & checkmate, castling, en passant, promotion, and draw rules—plus beginner tips to start winning." />
+  <link rel="canonical" href="https://voxelchess.app/blog/chess-rules-for-beginners-2026/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Voxel Chess" />
+  <meta property="og:title" content="Chess Rules for Beginners (2026): Learn in 15 Minutes" />
+  <meta property="og:description" content="A clear, modern guide to chess rules: piece moves, checkmate, castling, en passant, promotion, and draws." />
+  <meta property="og:url" content="https://voxelchess.app/blog/chess-rules-for-beginners-2026/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chess Rules for Beginners (2026): Learn in 15 Minutes" />
+  <meta name="twitter:description" content="Everything you need to start playing chess today—rules, moves, special cases, and quick-win beginner tips." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Chess Rules for Beginners (2026): Learn in 15 Minutes",
+    "description": "Learn chess rules fast: how pieces move, check & checkmate, castling, en passant, promotion, and draw rules—plus beginner tips to start winning.",
+    "author": {"@type": "Organization", "name": "Pixel Engine"},
+    "publisher": {"@type": "Organization", "name": "Pixel Engine"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://voxelchess.app/blog/chess-rules-for-beginners-2026/"},
+    "datePublished": "2026-04-29",
+    "dateModified": "2026-04-29"
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --panel:#0f0f12;
+      --text:#e6e6e6;
+      --muted:#a7a7a7;
+      --accent:#00ff66;
+      --accent2:#00c853;
+      --border:rgba(0,255,102,.18);
+      --shadow:0 0 0 1px var(--border), 0 16px 40px rgba(0,0,0,.55);
+      --mono: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(0,255,102,.10), transparent 60%),
+        radial-gradient(900px 700px at 80% 10%, rgba(0,255,102,.06), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      font-family:var(--mono);
+      line-height:1.65;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(10,10,10,.78);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      max-width:1080px; margin:0 auto; padding:14px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      letter-spacing:.18em; font-weight:800;
+    }
+    .logo{
+      width:34px; height:34px; border:1px solid var(--border);
+      box-shadow: 0 0 22px rgba(0,255,102,.18);
+      background:linear-gradient(135deg, rgba(0,255,102,.28), rgba(0,0,0,0));
+      display:grid; place-items:center;
+    }
+    .logo span{color:var(--accent); font-size:12px}
+    nav a{
+      margin-left:14px;
+      color:var(--text);
+      opacity:.9;
+    }
+    nav a:hover{color:var(--accent)}
+
+    main{max-width:1080px; margin:0 auto; padding:32px 18px 64px}
+    .hero{
+      padding:26px 22px;
+      background:linear-gradient(180deg, rgba(0,255,102,.08), rgba(0,0,0,0));
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      border-radius:16px;
+    }
+    .kicker{color:var(--accent); letter-spacing:.14em; font-size:12px}
+    h1{margin:.35rem 0 0; font-size:34px; line-height:1.2}
+    .sub{color:var(--muted); margin:10px 0 0; max-width:72ch}
+    .meta{margin-top:14px; color:var(--muted); font-size:13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.4fr .6fr;
+      gap:18px;
+      margin-top:18px;
+    }
+    @media (max-width: 940px){ .grid{grid-template-columns:1fr} }
+
+    article{
+      padding:22px;
+      background:rgba(15,15,18,.75);
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+    }
+    aside{
+      padding:22px;
+      background:rgba(15,15,18,.55);
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      height: fit-content;
+    }
+    h2{margin-top:28px; font-size:22px}
+    h3{margin-top:18px; font-size:16px; color:var(--accent)}
+    ul{margin:10px 0 10px 1.1rem}
+    li{margin:6px 0}
+    code, .chip{font-family:var(--mono)}
+
+    .callout{
+      border:1px dashed rgba(0,255,102,.35);
+      background:rgba(0,255,102,.06);
+      padding:14px 14px;
+      border-radius:14px;
+      margin:14px 0;
+    }
+    .callout strong{color:var(--accent)}
+
+    .diagram{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      background:rgba(0,0,0,.35);
+      overflow:auto;
+      margin:12px 0;
+    }
+    pre{margin:0; white-space:pre; color:#d7ffd7}
+
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(0,255,102,.22), rgba(0,255,102,.10));
+      border:1px solid rgba(0,255,102,.45);
+      color:var(--text);
+      box-shadow: 0 0 0 1px rgba(0,255,102,.12), 0 18px 32px rgba(0,0,0,.45);
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+    .btn:hover{ text-decoration:none; border-color:rgba(0,255,102,.75) }
+
+    footer{
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      padding:28px 18px;
+      text-align:center;
+      letter-spacing:.16em;
+    }
+    .toc a{display:block; padding:6px 0; color:var(--text); opacity:.92}
+    .toc a:hover{color:var(--accent)}
+    .small{font-size:13px; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span>VC</span></div>
+        <div>VOXEL CHESS</div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="/#features">Features</a>
+        <a href="/#screenshots">Screenshots</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="kicker">BEGINNER GUIDE · UPDATED FOR 2026</div>
+      <h1>Chess Rules for Beginners (2026): Learn in 15 Minutes</h1>
+      <p class="sub">If you’re brand new to chess, you don’t need encyclopedias of theory. You need clear rules, a few special moves, and a simple way to avoid blunders. This guide teaches the full rule set (including castling and en passant) with practical tips you can use immediately—then you can test it all in <strong>Voxel Chess</strong> against 10 difficulty levels, from Human to Machine God.</p>
+      <div class="meta">Reading time: ~10 minutes · Best for: absolute beginners · Goal: play a complete game confidently</div>
+    </section>
+
+    <div class="grid">
+      <article>
+        <h2 id="board-setup">1) The chessboard and starting setup</h2>
+        <p>Chess is played on an 8×8 board with alternating light and dark squares. Each player starts with 16 pieces:</p>
+        <ul>
+          <li>1 King</li>
+          <li>1 Queen</li>
+          <li>2 Rooks</li>
+          <li>2 Bishops</li>
+          <li>2 Knights</li>
+          <li>8 Pawns</li>
+        </ul>
+        <div class="callout"><strong>Beginner setup rule:</strong> Put the board so a light square is on your right corner. Queens start on their own color: White queen on a light square, Black queen on a dark square.</div>
+
+        <h3>Quick text diagram (White pieces at the bottom)</h3>
+        <div class="diagram" role="img" aria-label="Text diagram showing piece placement">
+<pre>8  r n b q k b n r
+7  p p p p p p p p
+6  . . . . . . . .
+5  . . . . . . . .
+4  . . . . . . . .
+3  . . . . . . . .
+2  P P P P P P P P
+1  R N B Q K B N R
+   a b c d e f g h</pre>
+        </div>
+        <p class="small">Legend: uppercase = White, lowercase = Black, “.” = empty square.</p>
+
+        <h2 id="turns">2) Turns, goals, and what “check” means</h2>
+        <p>Players alternate turns. On your turn you make one legal move. Your long-term goal is <strong>checkmate</strong>: put the enemy king in check with no legal escape.</p>
+        <ul>
+          <li><strong>Check</strong> = your king is under attack right now.</li>
+          <li>If you are in check, you must respond immediately.</li>
+        </ul>
+        <p>To get out of check, you must do at least one of these:</p>
+        <ul>
+          <li><strong>Move the king</strong> to a safe square.</li>
+          <li><strong>Capture</strong> the checking piece (if possible).</li>
+          <li><strong>Block</strong> the check (only works vs rook/bishop/queen lines).</li>
+        </ul>
+
+        <h2 id="piece-moves">3) How each chess piece moves (with beginner traps)</h2>
+
+        <h3 id="king">King</h3>
+        <p>The king moves 1 square in any direction. You may not move your king into check (onto an attacked square).</p>
+        <div class="callout"><strong>Beginner trap:</strong> “I can capture that piece with my king.” Yes—only if the destination square is not protected by an enemy piece.</div>
+
+        <h3 id="queen">Queen</h3>
+        <p>The queen moves any number of squares in a straight line: horizontally, vertically, or diagonally. It cannot jump over pieces.</p>
+        <p><strong>Tip:</strong> Beginners often bring the queen out too early and get it chased. Develop minor pieces (knights/bishops) first.</p>
+
+        <h3 id="rook">Rook</h3>
+        <p>The rook moves any number of squares horizontally or vertically. It cannot jump over pieces.</p>
+        <div class="callout"><strong>Rule connection:</strong> Rooks matter for <a href="#castling">castling</a>, the special king safety move.</div>
+
+        <h3 id="bishop">Bishop</h3>
+        <p>The bishop moves any number of squares diagonally and stays on the same color forever (light-squared bishop vs dark-squared bishop).</p>
+        <p><strong>Beginner check:</strong> Before moving a pawn, ask: “Am I opening a diagonal to my king?”</p>
+
+        <h3 id="knight">Knight</h3>
+        <p>The knight moves in an L-shape: 2 squares in one direction + 1 square perpendicular. Knights <strong>can jump</strong> over pieces.</p>
+        <div class="diagram" role="img" aria-label="Knight move diagram in text">
+<pre>Knight from d4 can go to:
+ b5  b3  c6  c2  e6  e2  f5  f3</pre>
+        </div>
+        <p><strong>Beginner trap:</strong> Knights create “forks”—one move attacks two targets. See our tactics guide: <a href="/blog/fork-patterns-chess/">Fork patterns in chess</a>.</p>
+
+        <h3 id="pawn">Pawn</h3>
+        <p>Pawns are the only piece that moves and captures differently:</p>
+        <ul>
+          <li><strong>Move:</strong> 1 square forward (never backward). From the starting rank, a pawn may move 2 squares forward if both squares are empty.</li>
+          <li><strong>Capture:</strong> 1 square diagonally forward.</li>
+        </ul>
+        <div class="callout"><strong>Beginner trap:</strong> Pawns do not capture straight ahead.</div>
+
+        <h2 id="special-moves">4) Special moves: castling, en passant, promotion</h2>
+
+        <h3 id="castling">Castling (king safety + rook activation)</h3>
+        <p>Castling is a special move where the king moves two squares toward a rook, and the rook jumps over the king to the adjacent square.</p>
+        <div class="diagram" role="img" aria-label="Text diagram for castling">
+<pre>Kingside castling for White:
+Before:  King e1, rook h1
+After:   King g1, rook f1</pre>
+        </div>
+        <p>Castling is legal only if ALL of these are true:</p>
+        <ul>
+          <li>The king and that rook have not moved yet.</li>
+          <li>No pieces are between them.</li>
+          <li>Your king is not currently in check.</li>
+          <li>The king does not pass through check and does not land in check (squares it crosses must be safe).</li>
+        </ul>
+        <p><strong>Practical advice:</strong> Beginners win more games simply by castling early and connecting their rooks.</p>
+
+        <h3 id="en-passant">En passant (the weird pawn rule)</h3>
+        <p><em>En passant</em> is a special pawn capture that happens only in one specific situation:</p>
+        <ul>
+          <li>An enemy pawn moves two squares forward from its starting position…</li>
+          <li>…and it lands next to your pawn.</li>
+          <li>On your very next move only, your pawn may capture it as if it moved just one square.</li>
+        </ul>
+        <div class="diagram" role="img" aria-label="En passant example in text">
+<pre>Example (White to move):
+Black pawn: from d7 to d5 (two-square move)
+White pawn on e5 can capture en passant: e5xd6
+(White pawn ends on d6, black pawn is removed from d5)</pre>
+        </div>
+        <div class="callout"><strong>Beginner memory:</strong> En passant is “capture in passing,” and it expires immediately—if you don’t take it right away, you lose the right.</div>
+
+        <h3 id="promotion">Promotion (turn a pawn into a queen)</h3>
+        <p>When a pawn reaches the last rank (8th rank for White, 1st rank for Black), it must promote to a new piece: queen, rook, bishop, or knight.</p>
+        <ul>
+          <li>You usually choose a <strong>queen</strong> (strongest).</li>
+          <li>Sometimes a <strong>knight</strong> promotion is best to give immediate check or avoid stalemate.</li>
+        </ul>
+
+        <h2 id="illegal">5) What makes a move illegal?</h2>
+        <p>A move is illegal if it violates how the piece moves, jumps over pieces (except knights), or leaves your king in check.</p>
+        <div class="callout"><strong>Beginner checkpoint:</strong> After every move, ask: “Is my king attacked now?” If yes, rewind—that move is illegal.</div>
+
+        <h2 id="draws">6) Draw rules every beginner should know</h2>
+        <p>Not every game ends in checkmate. Common draws include:</p>
+        <ul>
+          <li><strong>Stalemate:</strong> the player to move has no legal moves but is not in check.</li>
+          <li><strong>Threefold repetition:</strong> the same position repeats three times (claimable).</li>
+          <li><strong>50-move rule:</strong> 50 moves with no pawn move and no capture (claimable).</li>
+          <li><strong>Insufficient material:</strong> not enough pieces remain to force mate (automatic in many cases).</li>
+          <li><strong>Agreement:</strong> players agree to a draw.</li>
+        </ul>
+        <p><strong>Practical advice:</strong> If you’re ahead, avoid stalemate by leaving your opponent at least one legal move while you improve your position.</p>
+
+        <h2 id="first-game">7) A 5-step checklist for your first real game</h2>
+        <ol>
+          <li><strong>Control the center:</strong> try to occupy or attack e4, d4, e5, d5 with pawns/pieces.</li>
+          <li><strong>Develop pieces:</strong> bring knights and bishops out; don’t move the same piece five times early.</li>
+          <li><strong>Castle:</strong> king safety first.</li>
+          <li><strong>Connect rooks:</strong> clear the back rank so rooks protect each other.</li>
+          <li><strong>Look for tactics:</strong> forks, pins, and skewer ideas win beginner games.</li>
+        </ol>
+        <p>If you want a structured way to improve from here, our training plan can help: <a href="/blog/how-to-improve-chess-rating-30-day-training-plan/">How to improve your chess rating (30-day plan)</a>.</p>
+
+        <h2 id="practice">8) Practice the rules (and build instincts) in Voxel Chess</h2>
+        <p>Rules become automatic when you play short focused games. In <strong>Voxel Chess</strong>, you can start on the easiest difficulty to learn piece movement, then climb through tougher AIs as you gain confidence.</p>
+        <p>Two quick practice drills:</p>
+        <ul>
+          <li><strong>Rule drill:</strong> play 5 games where your only goal is “castle by move 10.”</li>
+          <li><strong>Safety drill:</strong> after every move, say out loud: “What did I just leave hanging?”</li>
+        </ul>
+
+        <h2 id="faq">FAQ: chess rules for beginners</h2>
+
+        <h3>Can you castle out of check?</h3>
+        <p>No. Castling is illegal if your king is in check, passes through check, or lands in check.</p>
+
+        <h3>Can a king capture a protected piece?</h3>
+        <p>No. Kings can’t move onto attacked squares, even if capturing.</p>
+
+        <h3>Is en passant mandatory?</h3>
+        <p>No. It’s optional, but only available immediately on the next move.</p>
+
+        <h3>What happens if I promote a pawn?</h3>
+        <p>You replace the pawn with a queen/rook/bishop/knight of your choice. You can have multiple queens.</p>
+
+        <h2 id="next">Next reading (keep leveling up)</h2>
+        <ul>
+          <li><a href="/blog/italian-game-beginners-guide/">Italian Game beginner guide</a></li>
+          <li><a href="/blog/how-to-play-carokann-defense-beginner-repertoire/">Caro-Kann Defense: beginner repertoire</a></li>
+          <li><a href="/blog/how-to-play-against-sicilian-defense-as-white/">How to play against the Sicilian Defense as White</a></li>
+          <li><a href="/blog/how-to-defend-against-a-kingside-attack/">How to defend against a kingside attack</a></li>
+          <li><a href="/blog/king-pawn-endgame-fundamentals/">King and pawn endgame fundamentals</a></li>
+          <li><a href="/blog/rook-endgames-lucena-philidor-beginners/">Rook endgames: Lucena & Philidor</a></li>
+          <li><a href="/blog/knight-outposts-create-defend-convert/">Knight outposts: create, defend, convert</a></li>
+          <li><a href="/blog/pawn-structure-mastery/">Pawn structure mastery</a></li>
+          <li><a href="/blog/analyze-chess-games-improve/">How to analyze your chess games (and improve fast)</a></li>
+          <li><a href="/blog/how-to-beat-chess-computer-practical-anti-engine-strategy/">How to beat a chess computer: practical anti-engine strategy</a></li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Ready to test your skills?</strong> Download Voxel Chess and play a few fast games today—start on Human difficulty, master the rules, then challenge Machine God.</p>
+          <p><a class="btn" href="/#download">Download Voxel Chess</a></p>
+        </div>
+      </article>
+
+      <aside>
+        <h3>On this page</h3>
+        <div class="toc">
+          <a href="#board-setup">1) Board & setup</a>
+          <a href="#turns">2) Turns, check, checkmate</a>
+          <a href="#piece-moves">3) How pieces move</a>
+          <a href="#special-moves">4) Special moves</a>
+          <a href="#draws">6) Draw rules</a>
+          <a href="#first-game">7) First-game checklist</a>
+          <a href="#practice">8) Practice in Voxel Chess</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <hr style="border:0;border-top:1px solid var(--border);margin:18px 0" />
+        <p class="small"><strong>Why this guide exists:</strong> Most “chess rules” pages bury the important stuff (king safety, castling conditions, en passant timing). This one is designed to get you playing quickly—then improving.</p>
+        <p class="small"><strong>Want tactics next?</strong> Start with <a href="/blog/fork-patterns-chess/">forks</a> and learn how to review your games: <a href="/blog/analyze-chess-games-improve/">analysis guide</a>.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    ©1994 PIXEL ENGINE
+  </footer>
+</body>
+</html>
