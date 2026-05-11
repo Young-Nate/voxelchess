@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>How Chess Pieces Move (Beginner Guide): 6 Moves + 12 Quick Tips</title>
+  <meta name="description" content="Learn how each chess piece moves (king, queen, rook, bishop, knight, pawn) with clear examples, common mistakes, and beginner tips to win more games." />
+  <link rel="canonical" href="https://voxelchess.app/blog/how-chess-pieces-move-beginners/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Voxel Chess" />
+  <meta property="og:title" content="How Chess Pieces Move: Beginner Guide + Quick Tips" />
+  <meta property="og:description" content="A clear, practical guide to every chess piece move, including pawn rules and castling, plus tips you can use today." />
+  <meta property="og:url" content="https://voxelchess.app/blog/how-chess-pieces-move-beginners/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="How Chess Pieces Move (Beginner Guide)" />
+  <meta name="twitter:description" content="Learn all 6 chess piece moves fast: rules, examples, and beginner mistakes to avoid." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How Chess Pieces Move (Beginner Guide): 6 Moves + 12 Quick Tips",
+    "description": "Learn how each chess piece moves (king, queen, rook, bishop, knight, pawn) with clear examples, common mistakes, and beginner tips to win more games.",
+    "author": {"@type": "Organization", "name": "Pixel Engine"},
+    "publisher": {"@type": "Organization", "name": "Pixel Engine"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://voxelchess.app/blog/how-chess-pieces-move-beginners/"}
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --panel:#0f1311;
+      --text:#e8ffe8;
+      --muted:#a8c7b0;
+      --accent:#00ff66;
+      --accent2:#00c853;
+      --line:rgba(0,255,102,.18);
+      --shadow:0 0 0 1px var(--line), 0 18px 60px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background:
+        radial-gradient(1200px 800px at 70% -10%, rgba(0,255,102,.10), transparent 55%),
+        radial-gradient(900px 600px at 10% 10%, rgba(0,255,102,.06), transparent 55%),
+        linear-gradient(180deg, #070707, var(--bg));
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* CRT scanlines */
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,.03),
+        rgba(255,255,255,.03) 1px,
+        rgba(0,0,0,0) 3px,
+        rgba(0,0,0,0) 6px
+      );
+      mix-blend-mode:overlay;
+      opacity:.18;
+    }
+
+    .wrap{max-width:980px; margin:0 auto; padding:24px}
+    header{
+      position:sticky; top:0; z-index:5;
+      backdrop-filter: blur(10px);
+      background:rgba(10,10,10,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px 24px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:34px; height:34px; border-radius:8px;
+      background:linear-gradient(135deg, rgba(0,255,102,.25), rgba(0,0,0,0));
+      box-shadow:0 0 0 1px var(--line), 0 0 22px rgba(0,255,102,.22);
+      position:relative;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:7px;
+      border:1px solid rgba(0,255,102,.55);
+      transform:skew(-8deg);
+    }
+    .brand strong{letter-spacing:.12em}
+
+    nav a{margin-left:14px; color:var(--text); opacity:.9}
+    nav a:hover{color:var(--accent)}
+
+    .card{
+      background:linear-gradient(180deg, rgba(15,19,17,.92), rgba(15,19,17,.72));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      border-radius:16px;
+      padding:28px;
+      margin-top:24px;
+    }
+
+    .kicker{color:var(--muted); margin:0 0 10px 0}
+    h1{line-height:1.15; margin:0 0 14px 0; font-size:34px}
+    h2{margin-top:34px; border-top:1px solid var(--line); padding-top:22px}
+    h3{margin-top:22px}
+    ul{margin:10px 0 0 18px}
+    .meta{display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px}
+
+    .callout{
+      border:1px solid rgba(0,255,102,.26);
+      background:rgba(0,255,102,.05);
+      border-radius:12px;
+      padding:14px 16px;
+      margin:16px 0;
+    }
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:14px; margin-top:14px}
+    .box{
+      grid-column:span 6;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:14px 16px;
+      background:rgba(0,0,0,.25);
+    }
+    .box h3{margin:0 0 6px 0}
+
+    .cta{
+      margin-top:28px;
+      padding:18px;
+      border-radius:14px;
+      border:1px solid rgba(0,255,102,.35);
+      background:linear-gradient(135deg, rgba(0,255,102,.16), rgba(0,0,0,.15));
+      display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(0,255,102,.55);
+      color:#001a0a;
+      background:var(--accent);
+      font-weight:800;
+      letter-spacing:.04em;
+      box-shadow:0 12px 30px rgba(0,255,102,.14);
+    }
+    .btn:hover{text-decoration:none; background:var(--accent2)}
+
+    footer{
+      margin:28px 0 18px 0;
+      color:var(--muted);
+      text-align:center;
+      font-size:13px;
+      opacity:.9;
+    }
+
+    @media (max-width:720px){
+      h1{font-size:28px}
+      .box{grid-column:span 12}
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <strong>VOXEL CHESS</strong>
+      </div>
+      <nav aria-label="Primary">
+        <a href="https://voxelchess.app/#features">Features</a>
+        <a href="https://voxelchess.app/#screenshots">Screenshots</a>
+        <a href="https://voxelchess.app/blog/">Blog</a>
+        <a href="https://voxelchess.app/#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="card">
+      <p class="kicker">Beginner chess fundamentals</p>
+      <h1>How Chess Pieces Move (Beginner Guide): 6 Moves + 12 Quick Tips</h1>
+      <div class="meta">
+        <span>Primary keyword: <strong>how chess pieces move</strong></span>
+        <span>•</span>
+        <span>Secondary: chess piece moves, how do pawns move, how does the knight move</span>
+      </div>
+
+      <p>
+        If you ever lost a game because you <em>thought</em> a piece moved one way but it actually moved another, you’re not alone.
+        This guide teaches <strong>how chess pieces move</strong> with simple rules, fast examples, and beginner mistakes to avoid.
+      </p>
+
+      <div class="callout">
+        <strong>Quick promise:</strong> After this article, you’ll be able to set up a board, move every piece correctly, and start spotting easy tactics.
+        If you want to practice immediately, Voxel Chess lets you drill these moves against the computer with 10 difficulty levels—from Human to Machine God.
+      </div>
+
+      <h2 id="the-board">1) The board basics (so the moves make sense)</h2>
+      <p>
+        Chess is played on an 8×8 board with light and dark squares.
+        Pieces move along squares, not between them.
+        Before learning each piece, lock in these three basics:
+      </p>
+      <ul>
+        <li><strong>Files</strong> are vertical columns (a through h).</li>
+        <li><strong>Ranks</strong> are horizontal rows (1 through 8).</li>
+        <li><strong>Diagonals</strong> run at 45° across the board.</li>
+      </ul>
+
+      <h2 id="king">2) How does the king move?</h2>
+      <p>
+        The king moves <strong>one square</strong> in any direction: up, down, left, right, or diagonally.
+        The king is the most important piece—if it’s checkmated, the game ends.
+      </p>
+      <div class="grid">
+        <div class="box">
+          <h3>King move rule</h3>
+          <ul>
+            <li>Moves 1 square in any direction.</li>
+            <li>Cannot move into check (a square attacked by an enemy piece).</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Beginner mistake</h3>
+          <p>
+            Thinking the king can capture a protected piece.
+            The king <em>can</em> capture, but only if the destination square is not attacked.
+          </p>
+        </div>
+      </div>
+
+      <h3 id="castling">Special king move: castling</h3>
+      <p>
+        Castling is a once-per-game move that helps your king get safe and your rook get active.
+        You move the king two squares toward a rook, and the rook jumps over the king.
+      </p>
+      <ul>
+        <li>You cannot castle if the king or that rook has moved earlier.</li>
+        <li>You cannot castle out of check, through check, or into check.</li>
+        <li>Squares between king and rook must be empty.</li>
+      </ul>
+
+      <h2 id="queen">3) How does the queen move?</h2>
+      <p>
+        The queen moves like a rook <em>and</em> a bishop combined: any number of squares in a straight line—horizontal, vertical, or diagonal.
+        She’s the most powerful piece for attacking, but beginners often bring her out too early.
+      </p>
+      <div class="callout">
+        <strong>Tip:</strong> If you’re new, try to develop knights and bishops first.
+        Keeping your queen safe stops your opponent from gaining tempo by chasing her around.
+      </div>
+
+      <h2 id="rook">4) How does the rook move?</h2>
+      <p>
+        Rooks move any number of squares <strong>horizontally or vertically</strong> (along ranks and files).
+        They cannot jump over pieces.
+      </p>
+      <h3>Rook power-up: open files</h3>
+      <p>
+        A rook is strongest on an <strong>open file</strong> (no pawns) or a <strong>semi-open file</strong> (your pawn is gone, opponent pawn is gone).
+        That’s why many endgames feel “rook heavy”: once pawns trade, files open.
+      </p>
+
+      <h2 id="bishop">5) How does the bishop move?</h2>
+      <p>
+        Bishops move any number of squares <strong>diagonally</strong> and cannot jump over pieces.
+        Each bishop stays on one color forever: one lives on light squares, the other on dark squares.
+      </p>
+      <h3>Bishop check: long diagonals</h3>
+      <p>
+        Beginners miss bishop attacks because bishops can hit targets far away.
+        When you’re deciding on a move, scan your bishops’ diagonals and ask: “What would open if a pawn moved?”
+      </p>
+
+      <h2 id="knight">6) How does the knight move?</h2>
+      <p>
+        The knight is the weird one.
+        A knight moves in an <strong>L-shape</strong>: two squares in one direction (up/down/left/right) and then one square perpendicular.
+      </p>
+      <div class="grid">
+        <div class="box">
+          <h3>Knight move rule</h3>
+          <ul>
+            <li>Moves 2 + 1 squares in an L.</li>
+            <li><strong>Can jump</strong> over pieces (unique power).</li>
+            <li>Captures on the square it lands on.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Fast trick to visualize</h3>
+          <p>
+            Imagine the knight draws a 2×3 or 3×2 rectangle.
+            It can go to any of the rectangle’s corners.
+          </p>
+        </div>
+      </div>
+      <p>
+        Because knights jump, they’re excellent in clogged positions.
+        If you want a practical way to train this, Voxel Chess is great for repeating positions: set the difficulty to Human, focus only on clean knight moves, then climb levels.
+      </p>
+
+      <h2 id="pawn">7) How do pawns move?</h2>
+      <p>
+        Pawns are the most confusing piece for beginners because they move one way but capture another.
+        Here are the pawn rules you must know:
+      </p>
+      <h3>Pawn normal move</h3>
+      <ul>
+        <li>Pawns move <strong>forward 1 square</strong> (toward the opponent’s side).</li>
+        <li>On their first move only, pawns can move <strong>forward 2 squares</strong> if both squares are empty.</li>
+        <li>Pawns do <strong>not</strong> move backward.</li>
+      </ul>
+      <h3>Pawn capture move</h3>
+      <ul>
+        <li>Pawns capture <strong>one square diagonally forward</strong>.</li>
+        <li>Pawns cannot capture straight forward.</li>
+      </ul>
+
+      <h3 id="en-passant">Special pawn rule: en passant</h3>
+      <p>
+        En passant is rare, but it’s real.
+        If an enemy pawn moves two squares and lands next to your pawn, your pawn may capture it <strong>as if it had moved only one square</strong>.
+        This capture must be done immediately on the next move.
+      </p>
+
+      <h3 id="promotion">Special pawn rule: promotion</h3>
+      <p>
+        When a pawn reaches the last rank, it promotes—usually to a queen.
+        Promotion is why pawns are secretly powerful: every pawn is a future major piece.
+      </p>
+
+      <h2 id="quick-reference">8) Quick reference table: piece moves in one glance</h2>
+      <div class="callout">
+        <ul>
+          <li><strong>King:</strong> 1 square any direction (plus castling special move).</li>
+          <li><strong>Queen:</strong> any squares in straight lines (rook + bishop).</li>
+          <li><strong>Rook:</strong> any squares horizontally/vertically.</li>
+          <li><strong>Bishop:</strong> any squares diagonally.</li>
+          <li><strong>Knight:</strong> L-shape (2 + 1), can jump.</li>
+          <li><strong>Pawn:</strong> forward 1 (or 2 from start), captures diagonally forward, promotes at the end.</li>
+        </ul>
+      </div>
+
+      <h2 id="tips">9) 12 quick tips to stop hanging pieces</h2>
+      <p>
+        Knowing moves is step one.
+        Step two is <em>not giving away free pieces</em>.
+        Use these quick habits:
+      </p>
+      <ol>
+        <li><strong>Before every move:</strong> ask “What did I leave behind?”</li>
+        <li><strong>After every move:</strong> ask “What did I attack?”</li>
+        <li>Scan for <strong>knight forks</strong> (knights attack two valuable targets at once).</li>
+        <li>Respect <strong>bishop diagonals</strong>—they travel far.</li>
+        <li>Keep rooks connected in the middlegame when possible.</li>
+        <li>Don’t push random pawns early; it creates weak squares.</li>
+        <li>Trade pieces when you’re up material; trade pawns when you’re behind (often).</li>
+        <li>If you’re unsure, improve your worst piece instead of forcing tactics.</li>
+        <li>Castle early in most beginner games (king safety matters more than “attack now”).</li>
+        <li>When you capture, check if the opponent can recapture with a pawn.</li>
+        <li>Use “checks, captures, threats” to find candidate moves—but verify tactics.</li>
+        <li>In endgames, activate the king (once queens are off, the king becomes a fighting piece).</li>
+      </ol>
+
+      <h2 id="practice">10) Practice plan: learn the moves in 20 minutes</h2>
+      <p>
+        Here’s a simple drill you can do today:
+      </p>
+      <ol>
+        <li>Set up a board and move each piece for 2 minutes: king, queen, rook, bishop, knight, pawn.</li>
+        <li>Place 6 random pieces and name what squares each one attacks.</li>
+        <li>Play 3 quick games and focus on one rule: “No piece moves to an attacked square for free.”</li>
+      </ol>
+      <p>
+        If you prefer training against an engine, Voxel Chess is built for repetition: play a game, rematch instantly, and raise difficulty when you can go 10 moves without dropping material.
+      </p>
+
+      <h2 id="internal-links">Keep learning</h2>
+      <p>
+        Want to stack skills faster? Keep reading:
+      </p>
+      <ul>
+        <li><a href="https://voxelchess.app/blog/how-to-play-chess-complete-beginners-guide-2026/">How to Play Chess: Complete Beginner’s Guide (2026)</a></li>
+        <li><a href="https://voxelchess.app/blog/chess-rules-for-beginners-2026/">Chess Rules for Beginners (2026)</a></li>
+        <li><a href="https://voxelchess.app/blog/how-to-win-at-chess-beginner-strategy-2026/">How to Win at Chess: Beginner Strategy</a></li>
+        <li><a href="https://voxelchess.app/blog/fork-patterns-chess/">Chess Forks: Patterns and Practice</a></li>
+        <li><a href="https://voxelchess.app/blog/best-chess-openings-for-beginners-2026/">Best Chess Openings for Beginners (2026)</a></li>
+        <li><a href="https://voxelchess.app/blog/italian-game-beginners-guide/">Italian Game: Beginner Guide</a></li>
+        <li><a href="https://voxelchess.app/blog/queens-gambit-declined-beginners-plans/">Queen’s Gambit Declined: Beginner Plans</a></li>
+        <li><a href="https://voxelchess.app/blog/how-to-play-against-sicilian-defense-as-white/">How to Play vs the Sicilian Defense as White</a></li>
+        <li><a href="https://voxelchess.app/blog/king-pawn-endgame-fundamentals/">King & Pawn Endgame Fundamentals</a></li>
+        <li><a href="https://voxelchess.app/blog/rook-endgames-lucena-philidor-beginners/">Rook Endgames: Lucena & Philidor (Beginners)</a></li>
+      </ul>
+
+      <div class="cta" id="download">
+        <div>
+          <strong>Ready to test your skills? Download Voxel Chess.</strong>
+          <div style="color:var(--muted); font-size:14px; margin-top:4px;">Retro voxel visuals. CRT scanlines. 10 difficulty levels. Built by Pixel Engine.</div>
+        </div>
+        <a class="btn" href="https://voxelchess.app/#download">Download Voxel Chess</a>
+      </div>
+    </article>
+
+    <footer>
+      ©1994 PIXEL ENGINE
+    </footer>
+  </main>
+</body>
+</html>
